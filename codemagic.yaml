@@ -1,0 +1,42 @@
+# Codemagic CI config — builds an UNSIGNED iOS .ipa for free sideloading
+# (no Apple Developer Program / no signing). Install the resulting .ipa with
+# Sideloadly or AltStore using a free Apple ID. See IOS_BUILD.md for the full flow.
+#
+# Free tier: 500 macOS build-minutes/month. A build takes ~10-15 min.
+
+workflows:
+  ios-unsigned:
+    name: iOS unsigned (sideload)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: 3.27.4          # matches the version the Android app was built with
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+    scripts:
+      - name: Flutter pub get
+        script: |
+          flutter pub get
+      - name: Build unsigned iOS app
+        # --no-codesign skips signing entirely; CocoaPods + Podfile are
+        # generated automatically by the flutter tool on first run.
+        script: |
+          flutter build ios --release --no-codesign
+      - name: Package unsigned .ipa for Sideloadly / AltStore
+        # Wrap the built Runner.app in a Payload/ folder and zip it into an .ipa.
+        script: |
+          set -e
+          cd build/ios/iphoneos
+          rm -rf Payload SkybaBonus-unsigned.ipa
+          mkdir Payload
+          cp -r Runner.app Payload/
+          zip -r9 SkybaBonus-unsigned.ipa Payload
+          echo "Built: $(pwd)/SkybaBonus-unsigned.ipa"
+    artifacts:
+      - build/ios/iphoneos/SkybaBonus-unsigned.ipa

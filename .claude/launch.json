@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "NestJS API",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:dev"],
+      "cwd": "${workspaceRoot}/skyba-bonus-api",
+      "port": 3000
+    },
+    {
+      "name": "Next.js Admin Panel",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceRoot}/admin",
+      "port": 3001
+    },
+    {
+      "name": "Prisma Studio",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "prisma:studio"],
+      "cwd": "${workspaceRoot}/skyba-bonus-api",
+      "port": 5555
+    },
+    {
+      "name": "PostgreSQL (Docker)",
+      "runtimeExecutable": "docker",
+      "runtimeArgs": ["compose", "up", "db", "-d"],
+      "cwd": "${workspaceRoot}/skyba-bonus-api",
+      "port": 5432
+    }
+  ]
+}

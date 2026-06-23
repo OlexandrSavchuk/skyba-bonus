@@ -1,0 +1,98 @@
+name: skyba_bonus
+description: Skyba Bonus - loyalty program app for Skyba bakery chain
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+
+  # Routing
+  go_router: ^14.2.0
+
+  # Network
+  dio: ^5.4.1
+
+  # Models
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+
+  # Storage
+  flutter_secure_storage: ^9.0.0
+  hive_flutter: ^1.1.0
+
+  # UI
+  qr_flutter: ^4.1.0
+  cached_network_image: ^3.3.1
+  flutter_svg: ^2.0.10+1
+  shimmer: ^3.0.0
+
+  # Notifications
+  firebase_core: ^2.27.0
+  firebase_messaging: ^14.7.15
+  flutter_local_notifications: ^17.0.0
+
+  # Utils
+  url_launcher: ^6.2.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  build_runner: ^2.4.8
+  freezed: ^2.4.7
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.4.0
+  custom_lint: ^0.6.4
+  riverpod_lint: ^2.3.10
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  min_sdk_android: 21
+  image_path: "assets/images/logo_icon.png"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/l10n/
+
+  fonts:
+    - family: DiariaSansPro
+      fonts:
+        - asset: assets/fonts/DiariaSansPro-Regular.otf
+          weight: 400
+        - asset: assets/fonts/DiariaSansPro-Italic.otf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/DiariaSansPro-Medium.otf
+          weight: 500
+        - asset: assets/fonts/DiariaSansPro-MediumItalic.otf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/DiariaSansPro-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/DiariaSansPro-SemiBoldItalic.otf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/DiariaSansPro-Bold.otf
+          weight: 700
+        - asset: assets/fonts/DiariaSansPro-BoldItalic.otf
+          weight: 700
+          style: italic
